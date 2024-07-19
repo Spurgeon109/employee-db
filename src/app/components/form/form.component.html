@@ -1,0 +1,41 @@
+<div class="form-container">
+  <form class="form-container__form" [formGroup]="formGroup">
+    <div class="form-container__form--item">
+      <mat-form-field appearance="outline">
+        <mat-label>Employee name</mat-label>
+        <mat-icon matPrefix svgIcon="person"></mat-icon>
+        <input type="text" matInput formControlName="name">
+      </mat-form-field>
+    </div>
+    <div class="form-container__form--item">
+      <mat-form-field appearance="outline">
+        <mat-label>Select role</mat-label>
+        <mat-icon matPrefix svgIcon="work"></mat-icon>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roleOptions" [value]="role">{{ role }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-container__form--sub-item">
+      <div class="form-container__form--item dt-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Joining date</mat-label>
+          <mat-icon matPrefix svgIcon="calendar" (click)="openJoinDatePicker($event)"></mat-icon>
+          <input type="date" matInput formControlName="joinedDate">
+        </mat-form-field>
+      </div>
+      <mat-icon svgIcon="arrow-right" class="arrow-icon"></mat-icon>
+      <div class="form-container__form--item dt-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Resigned date</mat-label>
+          <mat-icon matPrefix svgIcon="calendar" (click)="openResignDatePicker($event)"></mat-icon>
+          <input type="date" matInput formControlName="resignedDate">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button class="btn-primary" (click)="saveForm()">Save</button>
+      <button class="btn-secondary" (click)="cancelForm()">Cancel</button>
+    </div>
+  </form>
+</div>

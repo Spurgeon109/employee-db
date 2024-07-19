@@ -1,0 +1,7 @@
+
+<header>
+  <span class="title">{{title}}</span>
+  <button class="btn-primary-icon" *ngIf="this.editMode" (click)="deleteEmployee()"><mat-icon svgIcon="delete-outline"></mat-icon></button>
+
+</header>
+<app-form [employeeData]="empData" [editMode]="editMode"></app-form>

@@ -1,0 +1,134 @@
+:host{
+  min-height: calc(100vh - 120px);
+  display: block;
+}
+
+
+header{
+  background-color: var(--blue);
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  .title{
+    color: white;
+    margin: 0 0 0 1rem;
+    font-size: 20px;
+  }
+}
+
+.cmp-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  .list-container{
+    min-width: 50%;
+    &__title{
+      background-color: #f4f4f4;
+      color: var(--blue);
+      padding: 1rem;
+      font-size: 20px;
+    }
+    &__item{
+      padding: 0 1rem 0 1rem;
+      margin: 1rem 0 1rem 0;
+      list-style: none;
+      color: grey;
+      line-height: 25px;
+      align-items: center;
+      justify-content: space-between;
+      .name{
+        color: black;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+
+.form-container{
+  margin: 2rem 1rem;
+  width: 40rem;
+  &__form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    &--item{
+      width: 100%;
+      .mat-mdc-form-field{
+        width: 100%;
+      }
+    }
+    &--sub-item{
+      display: flex;
+      gap: 0.2rem;
+      width: 100%;
+      .arrow-icon{
+        top: 1rem;
+        position: relative;
+      }
+      .dt-field{
+        flex-shrink: 1;
+        width: 45%;
+        .mat-mdc-form-field{
+          width: 100%;
+          .mdc-text-field {
+            .mat-mdc-form-field-flex{
+              .mat-mdc-form-field-icon-prefix{
+                .mat-icon{
+                  cursor: pointer !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 896px){
+  .cmp-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+    .list-container{
+      box-shadow: none;
+    }
+  }
+  .add-btn{
+    margin: 2rem;
+  }
+  .form-container{
+    width: calc(100% - 2rem);
+  }
+}
+
+.add-btn{
+  position: fixed;
+  left: 100vw;
+  bottom: 4px;
+  z-index: 1;
+  margin: 1rem;
+  transform: translateX(-180%);
+}
+
+.footer{
+  position: sticky;
+  width: 100vw;
+  background-color: #f4f4f4;
+  color: grey;
+  padding: 1rem;
+  box-sizing: border-box;
+  bottom: 0;
+  font-size: 20px;
+  display: none;
+}
+
+@media screen and (max-width: 896px){
+  .footer{
+    display: block;
+  }
+}

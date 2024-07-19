@@ -1,0 +1,50 @@
+<mat-dialog-content>
+  <div class="cal-container">
+    <div class="dt-options">
+      <div>
+          <input (change)="onSelectChange('today')" type="radio" id="today" name="date"/>
+          <label for="today">Today</label>
+      </div>
+      <div>
+          <input (change)="onSelectChange('nextMonday')" type="radio" id="nextMonday" name="date"/>
+          <label for="nextMonday">Next Monday</label>
+      </div>
+      <div>
+          <input (change)="onSelectChange('nextTuesday')" type="radio" id="nextTuesday" name="date"/>
+          <label for="nextTuesday">Next Tuesday</label>
+      </div>
+      <div>
+          <input (change)="onSelectChange('nextWeek')" type="radio" id="nextWeek" name="date"/>
+          <label for="nextWeek">Next Week</label>
+      </div>
+    </div>
+    <div class="flx-row cal-container__cal-header">
+      <button mat-icon-button (click)="handlePrevClick()"><mat-icon svgIcon="arrow-left-fill" ></mat-icon></button>
+      <span class="cal-container__cal-header__dt-label">{{ this.monthArray[this.currentTab.month] }} {{
+        this.currentTab.year }}</span>
+      <button mat-icon-button (click)="handleNextClick()"><mat-icon svgIcon="arrow-right-fill"></mat-icon></button>
+    </div>
+    <div class="cal-container__body">
+      <div class="cal-container__body--dates">
+        <span *ngFor="let week of weekDays" class="labels">{{week}}</span>
+        <ng-container *ngFor="let date of currentDates">
+          <button mat-icon-button class="date-btn" [ngClass]="{'border-blue': (date === today && currentTab.month === todayMonth && currentTab.year === todayYear), 'selected-btn': currentTab.year === selectedYear && currentTab.month === selectedMonth && date === selectedDay}"  (click)="selectDate(date)">{{ date !== 0?date:'' }}</button>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="action-container flx-row">
+    <div  class="bottom-date-display">
+      <mat-icon svgIcon="calendar"></mat-icon>
+      <span *ngIf="selectedDate;else noDate">{{ selectedDate | date:'mediumDate' }}</span>
+      <ng-template #noDate><span>No Date</span></ng-template>
+    </div>
+    <div class="btn-container">
+      <button class="btn-secondary clr-blue" mat-dialog-close="">Cancel</button>
+      <button class="btn-primary" [mat-dialog-close]="selectedDate" >Save</button>
+    </div>
+  </div>
+</mat-dialog-actions>

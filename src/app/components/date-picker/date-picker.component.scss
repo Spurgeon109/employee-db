@@ -1,0 +1,133 @@
+.action-container{
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  .clr-blue{
+    color: var(--blue);
+    background-color: #1da1f21c;
+  }
+  .bottom-date-display{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+.cal-container{
+  .dt-options {
+    list-style-type:none;
+    margin:2px 0 0 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    & > *{
+      width: 45%;
+    }
+    padding:0;
+    div {
+      float:left;
+      margin:0 5px 0 0;
+      height:40px;
+      position:relative;
+      border-radius: 2px;
+    }
+    label,  input {
+      display:block;
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+    }
+    input[type="radio"] {
+      opacity:0.011;
+      z-index:100;
+    }
+    input[type="radio"]:checked + label {
+      background: var(--blue);
+      color: white;
+    }
+    label {
+      padding:5px;
+      border-radius: 4px;
+      cursor:pointer;
+      text-align: center;
+      z-index:90;
+      color: var(--blue);
+      background-color: rgba(29, 161, 242, 0.1098039216)
+    }
+  }
+  &__options{
+    display: flex;
+    flex-wrap: wrap;
+    & > *{
+      width: calc(50% - 4rem);
+    }
+    width: 400px;
+    gap: 0.5rem;
+    .checkbox{
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      margin: 0 auto;
+      background-color: #1da1f21c;
+      label{
+        float: left;
+        span{
+          text-align: center;
+          display: block;
+          color: var(--blue);
+        }
+        input{
+          position: absolute;
+          display: none;
+        }
+        input:checked + span{
+          color: white;
+          text-shadow: var(--blue);
+        }
+      }
+    }
+  }
+  &__cal-header{
+    button{
+      .mat-icon{
+        transform: scale(1.5);
+      }
+    }
+    align-items: center;
+    justify-content: center;
+    &__dt-label{
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  &__body{
+    &--dates{
+      width: 400px;
+      display: grid;
+      flex-wrap: wrap;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      .labels{
+        font-weight: bold;
+        text-align: center;
+        color: black;
+      }
+      .date-btn{
+        color: black;
+        font-size: 16px;
+        border: 1px;
+      }
+      .border-blue{
+        border: 1px solid var(--blue);
+        color: var(--blue);
+      }
+      .selected-btn{
+        background-color: var(--blue);
+        color: white;
+      }
+    }
+  }
+}

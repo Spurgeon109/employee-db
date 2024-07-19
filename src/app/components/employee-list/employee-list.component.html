@@ -1,0 +1,40 @@
+<header>
+  <span class="title">Employee List</span>
+</header>
+<div class="cmp-wrapper" *ngIf="!createMode && !editMode">
+  <div class="list-container mat-elevation-z8">
+    <div class="list-container__title">Current Employees</div>
+    <div class="list-container__item flx-row" *ngFor="let item of currentEmployeeList" (touchStart)="touchStart($event)">
+      <ng-container *ngIf="item.isCurrentEmployee">
+        <div class="flx-col">
+          <span class="name">{{ item.name }}</span>
+          <span>{{ item.role }}</span>
+          <span>From {{ item.joinedDate | date:'mediumDate' }}</span>
+        </div>
+        <div class="action-items">
+          <button class="btn-primary-icon" (click)="editEmployee(item.id)"><mat-icon svgIcon="edit"></mat-icon></button>
+          <button class="btn-secondary-icon dlt-btn" (click)="deleteEmp(item.id)"><mat-icon
+              svgIcon="delete"></mat-icon></button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="list-container mat-elevation-z8">
+    <div class="list-container__title">Previous Employees</div>
+    <div class="list-container__item flx-row" *ngFor="let item of previousEmployeeList" >
+      <ng-container *ngIf="!item.isCurrentEmployee">
+        <div class="flx-col">
+          <span class="name">{{ item.name }}</span>
+          <span>{{ item.role }}</span>
+          <span>From {{ item.joinedDate | date:'mediumDate' }}</span>
+        </div>
+        <div class="action-items">
+          <button class="btn-primary-icon" (click)="editEmployee(item.id)"><mat-icon svgIcon="edit"></mat-icon></button>
+          <button class="btn-secondary-icon dlt-btn" (click)="deleteEmp(item.id)"><mat-icon
+              svgIcon="delete"></mat-icon></button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<button class="btn-primary-icon add-btn" (click)="createEmployeePreOp()" *ngIf="!createMode && !editMode"><mat-icon svgIcon="add"></mat-icon></button>
